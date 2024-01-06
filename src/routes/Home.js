@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MovieRender from "../components/MovieRender";
+import Movie from "../components/Movie";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ function Home() {
       ) : (
         <div>
           {movies.map((movie) => (
-            <MovieRender
+            <Movie
               key={movie.id}
               coverImg={movie.medium_cover_image}
               title={movie.title}
