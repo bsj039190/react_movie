@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import css from "../css/Detail.module.css";
 
 function Detail() {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([]);
   const [cover, setCover] = useState("");
+
+  // CSS module을 이용하여 배경 이미지 스타일을 설정
+  const backgroundStyle = {
+    backgroundImage: `url(${movie.background_image})`,
+
+    alignItems: "center",
+    justifyContent: "center",
+  };
 
   const getMovie = async () => {
     const response = await fetch(
@@ -24,18 +33,21 @@ function Detail() {
     getMovie();
   }, []);
   return (
-    <div>
-      <img src={movie.background_image} alt="background" />
-      <img src={cover} alt={cover} />
-      <h2>{movie.title}</h2>
-      <ul>
-        <li>
+    <div style={backgroundStyle} className={css.background}>
+      <img src={cover} alt={cover} className={css.text} />
+      <h2 className={css.text}>{movie.title}</h2>
+      <ul className={css.genres_list}>
+        <li className={css.genres}>
           {genres.map((g) => (
-            <li key={g}>{g}</li>
+            <li key={g} className={css.genres_item}>
+              {g}
+            </li>
           ))}
         </li>
       </ul>
-      <h3>Rating : {movie.rating}</h3>
+      <h3>
+        {Array.from({ length: movie.rating }, (_, index) => "⭐").join("")}
+      </h3>
     </div>
   );
 }
