@@ -3,7 +3,7 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 화면에서 스크롤을 막음 */
+  /*overflow: hidden; 여기다가 쓰면 이상해짐 */
   color: white;
 }
 
@@ -14,6 +14,9 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  /*여기다가 넣어야 정상적으로 작동됨*/
+  overflow: hidden;
 }
 
 .text {
