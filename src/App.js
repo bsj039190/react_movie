@@ -8,6 +8,7 @@ function App() {
       <Switch>
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Detail />}>
           <Detail />
+          console.log("Um");
         </Route>
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}>
           <Home />
